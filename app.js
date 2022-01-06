@@ -33,15 +33,17 @@ app.get("/", function(req, res) {
   });
 });
 
-app.get("/about", function(req, res){
-  res.render("about");
-});
-
 app.post("/", function(req, res){
   const item = req.body.newItem;
+  Item.create({name: item}, (err) =>{} );
+  res.redirect("/");
 });
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.post("/delete", (req, res)=> {
+  itemToDelete = req.body.checkbox;
+  Item.deleteOne({_id: itemToDelete}, (err)=>{});
+  res.redirect("/");
 });
+
+app.listen(3000, () => console.log("server has begun running on port 3000"));
 
