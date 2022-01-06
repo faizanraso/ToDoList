@@ -13,19 +13,6 @@ mongoose.connect("mongodb://localhost:27017/todolistDB");
 const itemsSchema = {name: String}
 const Item = mongoose.model("Item", itemsSchema);
 
-// const item1 = new Item({name: "Test 1"});
-// const item2 = new Item({name: "Test 2"});
-// const item3 = new Item({name: "Test 3"});
-
-// const defaultItems = [item1, item2, item3];
-
-// Item.insertMany(defaultItems, (err)=>{
-//   if(err){
-//     console.log(err);
-//   } else{
-//     console.log("Successfully inserted records to collection");
-//   }
-// });
 
 app.get("/", function(req, res) {
   Item.find({}, (err, results) =>{
